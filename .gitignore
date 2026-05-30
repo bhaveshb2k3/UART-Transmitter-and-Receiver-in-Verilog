@@ -1,0 +1,15 @@
+# Waveforms
+*.vcd
+
+# Compiled outputs
+*.vvp
+a.out
+
+# GTKWave files
+*.gtkw
+
+# Temporary files
+*.tmp
+
+# VS Code settings
+.vscode/
