@@ -11,11 +11,11 @@ Design of UART protocol Transmitter and Receiver, testing their functioning sepa
 
 ## UART Transmitter
 
-Transmits data with the structure - 
+Transmits data with the structure -> 
 Start bit (0/LOW) - 8 Data bits - Stop bit (1/HIGH)
 
 ### Inputs
-- req (1 bit)
+- req (1 bit) 
 - data (8 bits)
 - reset (1 bit)
 - clk (1 bit)
@@ -25,3 +25,7 @@ Start bit (0/LOW) - 8 Data bits - Stop bit (1/HIGH)
 - tx (1 bit)
 
 
+### Working
+- "req" should be driven HIGH to start transmitting data from "data" register.
+- "data" should be ready with the data before driving "req"
+- 
