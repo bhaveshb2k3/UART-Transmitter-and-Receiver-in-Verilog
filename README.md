@@ -1,10 +1,10 @@
 # UART-Transmitter-and-Receiver-Devices-in-Verilog
 Design of UART protocol Transmitter and Receiver, testing their functioning separately and together.
-Designed fully from scratch with the general idea of the UART protocol. No references used.
+Designed fully from scratch with the general idea of the UART protocol.
 
 ## UART Protocol
 
-- It is a Serial Communication protocol, which is Full Duplex, meaning transmission and recieving can happen at the same time in between two devices, and both devices can transmit as well as receive with this protocol.
+- It is a Serial Communication protocol, which is Full Duplex, meaning transmission and receiving can happen at the same time in between two devices, and both devices can transmit as well as receive with this protocol.
 - For one device, there is a transmit line (generally named tx) and a receive line (generally named rx).
 - For interconnection, tx of both devices is connected to rx of the other device. 
 - The transmission is controlled by the external device, but receiving does not require external control.
@@ -39,5 +39,13 @@ Start bit (0/LOW) - 8 Data bits - Stop bit (1/HIGH)
 7) "cnt" counts number of bits transmitted.
 8) "baudcnt" counts number of clock cycles passed from the start of a bit transmission. It is used to terminate the current bit and start transmitting next bit after a certain number of clock cycles, to maintain baud rate.
 9) For this transmitter, the clocks per bit is 5.
-10) It is assumed to be given a clock of 11.0592 MHz , so for 5 clocks per bit the baud rate is 2.2 MHz.
-11) 
+10) It is assumed to be given a clock of 11.0592 MHz , so for 5 clocks per bit the baud rate is 2.2 MHz. (Irrelevant for the working, just a baud rate calculation based on a widely used clock frequency in microcontrollers)
+
+
+### Limitations
+- No parity bit transmitted
+- Fixed baud rate
+- Fixed frame size (frame is the unit of data sent per continous transmission, which is 1 byte for this transmitter)
+
+
+## UART Receiver
