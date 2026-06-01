@@ -48,6 +48,16 @@ Start bit (0/LOW) - 8 Data bits - Stop bit (1/HIGH)
 
 ## UART Receiver
 
+Receives data of 1 byte frame of the structure -> 
+Start bit (0/LOW) - 8 Data bits - Stop bit (1/HIGH)
+
+### Inputs
+- rx (1 bit)
+- reset (1 bit)
+- clk (1 bit)
+
+
+
 ## Simulation instructions
 
 Download all files and store them in a single folder. The simulation must be done in a Linux system, with Icarus verilog and GTKwave installed.
