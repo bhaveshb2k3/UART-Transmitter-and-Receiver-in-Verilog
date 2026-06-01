@@ -56,7 +56,19 @@ Start bit (0/LOW) - 8 Data bits - Stop bit (1/HIGH)
 - reset (1 bit)
 - clk (1 bit)
 
+### Outputs
+- data (8 bits)
 
+### Internal Registers
+- clkcnt (3 bits)
+- cnt (4 bits)
+- idle (1 bit)
+- shift_reg (8 bits)
+
+### Working
+1) The device shall be reset first to avoid anomaly
+2) The receiver stays in idle state with "idle" being LOW. The input "rx" is HIGH in idle state.
+3) After receiving start bit, "idle" becomes LOW, and c
 
 ## Simulation instructions
 
