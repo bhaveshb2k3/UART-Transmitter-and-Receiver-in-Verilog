@@ -41,11 +41,33 @@ Start bit (0/LOW) - 8 Data bits - Stop bit (1/HIGH)
 9) For this transmitter, the clocks per bit is 5.
 10) It is assumed to be given a clock of 11.0592 MHz , so for 5 clocks per bit the baud rate is 2.2 MHz. (Irrelevant for the working, just a baud rate calculation based on a widely used clock frequency in microcontrollers)
 
-
 ### Limitations
 - No parity bit transmitted
 - Fixed baud rate
 - Fixed frame size (frame is the unit of data sent per continous transmission, which is 1 byte for this transmitter)
 
-
 ## UART Receiver
+
+## Simulation instructions
+
+Download all files and store them in a single folder. The simulation must be done in a Linux system, with Icarus verilog and GTKwave installed.
+
+To simulate transmitter working - in terminal, go to the folder containing the files using cd command and execute
+```bash
+iverilog -o utx uart_transmitter.v Testbenches/uart_transmitter_tb.v
+vvp utx
+gtkwave uart_tx.vcd
+```
+
+To simulate receiver working - 
+```bash
+iverilog -o urx uart_receiver.v Testbenches/uart_receiver_tb.v
+vvp urx
+gtkwave uart_rx.vcd
+```
+
+To simulate the combined working, transmitter and receiver connected together (to test whether transmitted data is received correctly) -
+```bash
+iverilog -o utxrx uart_transmitter.v uart_receiver.v Testbenches/combined_tb.v
+vvp utxrx
+```
