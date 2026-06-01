@@ -24,8 +24,15 @@ Start bit (0/LOW) - 8 Data bits - Stop bit (1/HIGH)
 - busy (1 bit)
 - tx (1 bit)
 
+### Internal Registers
+- cnt (4 bits)
+- baudcnt (11 bits)
+- shift_reg (8 bits)
 
 ### Working
-- "req" should be driven HIGH to start transmitting data from "data" register.
-- "data" should be ready with the data before driving "req"
-- 
+1) Device shall be reset first to avoid anomaly, so "reset" is driven HIGH
+2) After reset, device is found transmitting HIGH in "tx" until "req" is driven HIGH
+3) When "req" is driven HIGH, the data in "data" is transferred to "shift_reg"
+4) Transmission starts, with the order 0 (start) - data - 1 (stop)
+5) The data transmitted is such that LSB is transmitted first and MSB last
+6) 
