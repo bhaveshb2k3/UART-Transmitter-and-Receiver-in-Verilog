@@ -1,5 +1,5 @@
 # UART-Transmitter-and-Receiver-Devices-in-Verilog
-Design of UART protocol Transmitter and Receiver, testing their functioning separately and together.
+Design of UART protocol Transmitter and Receiver, and verifying their functioning separately and together.
 Designed fully from scratch with the general idea of the UART protocol.
 
 ## UART Protocol
@@ -67,8 +67,10 @@ Start bit (0/LOW) - 8 Data bits - Stop bit (1/HIGH)
 
 ### Working
 1) The device shall be reset first to avoid anomaly
-2) The receiver stays in idle state with "idle" being LOW. The input "rx" is HIGH in idle state.
-3) After receiving start bit, "idle" becomes LOW, and c
+2) After reset, the receiver stays in idle state with "idle" being LOW. The input "rx" is HIGH in idle state.
+3) After receiving start bit, "idle" becomes LOW, and clocks are started to getting counted and stored in "clkcnt". This is to identify the center of the data bits with respect to the specific baud rate.
+4) It identifies the center of each data bit and samples it into MSB of "shift_reg". It is sampled at center because it has the least probability of being in a metasatble state.
+5) "cnt" helps keep track the number of bits passed. 
 
 ## Simulation instructions
 
