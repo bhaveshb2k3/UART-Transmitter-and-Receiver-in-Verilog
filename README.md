@@ -70,10 +70,17 @@ Start bit (0/LOW) - 8 Data bits - Stop bit (1/HIGH)
 2) After reset, the receiver stays in idle state with "idle" being LOW. The input "rx" is HIGH in idle state.
 3) After receiving start bit, "idle" becomes LOW, and clocks are started to getting counted and stored in "clkcnt". This is to identify the center of the data bits with respect to the specific baud rate.
 4) It identifies the center of each data bit and samples it into MSB of "shift_reg". It is sampled at center because it has the least probability of being in a metasatble state.
-5) "cnt" helps keep track the number of bits passed. 
+5) "cnt" helps keep track the number of bits passed.
+6) "shift_reg" is undergone logical right shift after each sample to make space for the next sample.
+7) After all data bits have been sampled, contents of "shift_reg" is moved to "data" for the external device access the data.
+8) Device returns to idle state and "idle" goes HIGH until the next start bit is received.
 
 ## Simulation instructions
 
+The working of this machine is verified using testbenches and waveforms. 
+
+
+To simulate testbenches and get waveforms - 
 Download all files and store them in a single folder. The simulation must be done in a Linux system, with Icarus verilog and GTKwave installed.
 
 To simulate transmitter working - in terminal, go to the folder containing the files using cd command and execute
