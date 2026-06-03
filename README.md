@@ -75,6 +75,12 @@ Start bit (0/LOW) - 8 Data bits - Stop bit (1/HIGH)
 7) After all data bits have been sampled, contents of "shift_reg" is moved to "data" for the external device access the data.
 8) Device returns to idle state and "idle" goes HIGH until the next start bit is received.
 
+### Limitations
+- no oversampling (helps detect the center better)
+- no frame error detection signal
+- no seperate signal for data ready, the external device has to rely on "idle" signal.
+- fixed baud rate and receiver
+
 ## Simulation instructions
 
 The working of this machine is verified using testbenches and waveforms. 
